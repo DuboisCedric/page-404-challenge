@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
+
+/* -------------------général-------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url(./font.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.logo {
+  width: 150px;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+/* --------------navigation------------------------ */
+
+nav {
+  height: 70px;
+  color: white;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+  height: 70px;
+}
+
+li {
+  margin-right: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+li:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* -------------------------container--------------------- */
+
+.container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.picture__size {
+  width: 100px;
+}
+
+/* ----------design h1 page 404 et animation-------- */
+
+h1 {
+  color: transparent;
+  display: flex;
+  gap: 10px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 5vw;
+  padding: 20px 0 40px;
+}
+
+h1 span {
+  animation: page 3s linear infinite;
+  animation-delay: calc(0.1s * var(--l));
+}
+
+@keyframes page {
+  0% {
+    color: #fff;
+    filter: blur(1px) hue-rotate(0deg);
+    text-shadow: 0 0 20px red, 0 0 40px red;
+  }
+  30%,
+  70% {
+    color: #fff;
+    filter: blur(1px) hue-rotate(360deg);
+    text-shadow: 0 0 20px red, 0 0 40px red;
+  }
+  100% {
+    color: transparent;
+    box-shadow: none;
+    filter: blur(2px) hue-rotate(0deg);
+  }
+}
+
+/* ---------------Cube et Animation-------------- */
+
+.scene {
+  perspective: 400px;
+}
+
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: 0.3s;
+  animation: rotateAnimation 5.5s infinite;
+}
+
+.boxface {
+  background: url(./colors.jpg);
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  font-size: 120px;
+  line-height: 200px;
+  text-align: center;
+  color: white;
+  border: 2px solid white;
+}
+
+.boxface.front {
+  transform: rotateY(0deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.2);
+}
+.boxface.back {
+  transform: rotateY(90deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.4);
+}
+.boxface.right {
+  transform: rotateY(180deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.2);
+}
+.boxface.left {
+  transform: rotateY(-90deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.4);
+}
+.boxface.top {
+  transform: rotateX(90deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 100px !important;
+}
+.boxface.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes rotateAnimation {
+  25% {
+    transform: translateZ(-100px) rotateY(-90deg);
+  }
+  50% {
+    transform: translateZ(-100px) rotateY(-180deg);
+  }
+  75% {
+    transform: translateZ(-100px) rotateX(-90deg);
+  }
+  85% {
+    transform: translateZ(-100px) rotateX(-90deg) translateZ(50px);
+  }
+  90% {
+    transform: translateZ(-100px) rotateX(-90deg) translateZ(0px);
+  }
+}
+
+/* ------------------Description---------------------- */
+
+.description {
+  margin-top: 60px;
+  text-align: center;
+}
+.description h2 {
+  color: white;
+  margin: 0;
+  font-size: 26px;
+}
+
+#letter {
+  font-size: 2.5rem;
+}
+
+.description button {
+  color: white;
+  border: 2px solid white;
+  background: transparent;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.description button::after {
+  width: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  background: white;
+  transition: 0.3s;
+  z-index: -1;
+}
+.description button:hover {
+  color: black;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+.description button:hover::after {
+  height: 100%;
+}
+
+/* ------------------responsive----------------------- */
+
+@media screen and (max-width: 659px) {
+  nav ul {
+    display: none;
+  }
+  nav {
+    justify-content: center;
+  }
+  nav ul {
+    gap: 20px;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  nav {
+    justify-content: center;
+  }
+  nav ul {
+    gap: 20px;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .logo {
+    margin-left: 0;
+  }
+  nav {
+    justify-content: center;
+  }
+  nav ul {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .picture__size {
+    width: 70px;
+  }
+  .desc h2 {
+    font-size: 18px;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  nav {
+    justify-content: center;
+  }
+  nav ul {
+    display: none;
+  }
+}
